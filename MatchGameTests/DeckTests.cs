@@ -16,5 +16,18 @@ namespace MatchGameTests
             //Assert
             Assert.IsType<List<Card>>(listOfCards);
         }
+
+        [Fact]
+        public void BuildStandardPack_GeneratesFiftyTwoCardPack()
+        {
+            //Arrange
+            Deck deck = new();
+            const int standardPackSize = 52;
+            //Act
+            var listOfCards = deck.BuildStandardPack();
+            //Assert
+            Assert.Equal(standardPackSize, listOfCards.Count);
+        }
+       
     }
 }
