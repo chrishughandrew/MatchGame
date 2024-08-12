@@ -59,7 +59,10 @@ namespace MatchGame
         public Card TakeCard()
         {
             Card topCard = _cards.FirstOrDefault();
-
+            if (topCard != null)
+            {
+                _cards.Remove(topCard);
+            }
             return topCard;
         }
     }

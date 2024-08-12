@@ -143,7 +143,22 @@ namespace MatchGameTests
             
         }
 
+        [Fact]
+        public void TakeCard_RemovesCardFromTheDeck()
+        {
+            //Arrange
+            Deck deck = new(2);
+            int originalCount = deck.Cards.Count;
+            int expectedCount = originalCount - 1;
 
+            //Act
+            Card _ = deck.TakeCard();
+            int remainingCount = deck.Cards.Count;
+
+            //Assert
+            Assert.Equal(expectedCount, remainingCount);
+
+        }
 
     }
 }
