@@ -16,5 +16,21 @@ namespace MatchGame
 
             return standardDeck.ToList();
         }
+        /// <summary>
+        ///     A deck method that will return a collection of multiple standard
+        ///     52 card packs to the factor provided by the input. 
+        /// </summary>
+        /// <param name="numOfPacks">Should always be 1 or more to return a useful ouput</param>
+        /// <returns>The collection of playing cards</returns>
+        public List<Card> BuildMultiplePacks(int numOfPacks)
+        {
+            List<Card> packs = new();
+            for (int i = 0; i < numOfPacks; i++)
+            {
+                packs.AddRange(BuildStandardPack());
+            }
+
+            return packs;
+        }
     }
 }

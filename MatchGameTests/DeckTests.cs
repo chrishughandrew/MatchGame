@@ -34,7 +34,7 @@ namespace MatchGameTests
         {
             //Arrange
             Deck deck = new();
-            const int valueCount = 4;
+            const int countPerValue = 4;
             //Act
             var packOfCards = deck.BuildStandardPack();
             var frequencyList = packOfCards
@@ -49,7 +49,7 @@ namespace MatchGameTests
 
             //Assert
             Assert.All(frequencyList,
-                item => Assert.Equal(valueCount, item.Freq)
+                item => Assert.Equal(countPerValue, item.Freq)
                 );
         }
 
@@ -58,7 +58,7 @@ namespace MatchGameTests
         {
             //Arrange
             Deck deck = new();
-            const int suitCount = 13;
+            const int countPerSuit = 13;
             //Act
             var packOfCards = deck.BuildStandardPack();
             var frequencyList = packOfCards
@@ -72,8 +72,39 @@ namespace MatchGameTests
 
             //Assert
             Assert.All(frequencyList,
-                item => Assert.Equal(suitCount, item.Freq)
+                item => Assert.Equal(countPerSuit, item.Freq)
                 );
         }
+
+        [Fact]
+        public void BuildMultiplePacks_ReturnsListOfCards()
+        {
+            //Arrange
+            Deck deck = new();
+            //Act
+            var listOfCards = deck.BuildMultiplePacks(1);
+            //Assert
+            Assert.IsType<List<Card>>(listOfCards);
+        }
+
+        [Theory]
+        [InlineData(104, 2)]
+        [InlineData(260, 5)]
+        [InlineData(5200, 100)]
+        public void BuildMultiplePacks_GeneratesPackSizeOfMultiplesOfFiftyTwoCards(int expected, int methodInput)
+        {
+            //Arrange
+            Deck deck = new();
+            //Act
+            var deckOfCards = deck.BuildMultiplePacks(methodInput);
+            //Assert
+            Assert.Equal(expected, deckOfCards.Count);
+        }
+
+
+        //negative input 
+        //zero input 
+
+
     }
 }

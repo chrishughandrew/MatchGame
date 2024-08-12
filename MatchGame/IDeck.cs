@@ -9,5 +9,7 @@ namespace MatchGame
     internal interface IDeck
     {
         List<Card> BuildStandardPack();
+        List<Card> BuildMultiplePacks(int numOfPacks);
+
     }
 }
