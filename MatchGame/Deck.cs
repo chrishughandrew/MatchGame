@@ -55,5 +55,12 @@ namespace MatchGame
                 .OrderBy(_ => rnd.Next())
                 .ToList();
         }
+
+        public Card TakeCard()
+        {
+            Card topCard = _cards.FirstOrDefault();
+
+            return topCard;
+        }
     }
 }

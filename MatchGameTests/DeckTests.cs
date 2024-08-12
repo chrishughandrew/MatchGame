@@ -115,7 +115,7 @@ namespace MatchGameTests
         }
 
         [Fact]
-        public void Shuffle_ResultsInDifferentOrderOfCardsCollection()
+        public void Shuffle_ResultsInDifferentOrderOfCardsPropInDeck()
         {
             //Arrange
             Deck deck = new(2);
@@ -126,6 +126,21 @@ namespace MatchGameTests
             //Assert
             Assert.NotEqual(originalOrder, newOrder);
 
+        }
+
+        [Fact]
+        public void TakeCard_ReturnsTheTopCardFromTheDeck()
+        {
+            //Arrange
+            Deck deck = new(2);
+            Card firstCard = deck.Cards[0];
+
+            //Act
+            Card returnedCard = deck.TakeCard();
+
+            //Assert
+            Assert.Equal(firstCard, returnedCard);
+            
         }
 
 

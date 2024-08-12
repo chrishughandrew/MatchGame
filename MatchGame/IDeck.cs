@@ -10,6 +10,8 @@ namespace MatchGame
     {
         List<Card> BuildStandardPack();
         List<Card> BuildMultiplePacks(int numOfPacks);
+        void Shuffle();
+        Card TakeCard();
 
     }
 }
