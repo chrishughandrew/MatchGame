@@ -1,4 +1,5 @@
 using MatchGame;
+using Newtonsoft.Json.Bson;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -101,9 +102,32 @@ namespace MatchGameTests
             Assert.Equal(expected, deckOfCards.Count);
         }
 
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(0)]
+        public void BuildMultiplePacks_ThrowsArgumentExceptionWhenZeroOrLess(int methodInput)
+        {
+            //Arrange
+            Deck deck = new();
+            //Act
+            //Assert
+            Assert.Throws<ArgumentOutOfRangeException>( () => deck.BuildMultiplePacks(methodInput));
+        }
 
-        //negative input 
-        //zero input 
+        [Fact]
+        public void Shuffle_ResultsInDifferentOrderOfCardsCollection()
+        {
+            //Arrange
+            Deck deck = new(2);
+            List<Card> originalOrder = deck.Cards;
+            //Act 
+            deck.Shuffle();
+            List<Card> newOrder = deck.Cards;
+            //Assert
+            Assert.NotEqual(originalOrder, newOrder);
+
+        }
+
 
 
     }
