@@ -105,7 +105,21 @@ namespace MatchGameTests
             Assert.Equal(expected, actual);
         }
 
-        //Setup_EstablishesTheCardsInTheDeck()
+        [Fact]
+        public void Setup_InformsThatGameIsReadyToPlay()
+        {
+            //Arrange
+            MatchRuleEnum matchRule = MatchRuleEnum.FULL;
+            string expected = "The game is ready to play.";
+
+            //Act
+            string actual = _sut.Setup(matchRule, 3);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+
 
         //Play_CyclesThroughGameLogicUntilCardCountIsZero()
 

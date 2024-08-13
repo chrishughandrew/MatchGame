@@ -38,7 +38,7 @@ namespace MatchGame
 
             string setupInfo = matchRule == MatchRuleEnum.FULL && numOfPacks == 1
                 ? "You can play with this setup, but nobody ever wins!"
-                : String.Empty;
+                : "The game is ready to play.";
 
             return setupInfo;
         }
