@@ -21,7 +21,12 @@ namespace MatchGame
 
         public ResultEnum DeclareWinner()
         {
-            return ResultEnum.DRAW;
+            if (_player1.Score > _player2.Score)
+                return ResultEnum.PLAYER1;
+            else if (_player1.Score < _player2.Score)
+                return ResultEnum.PLAYER2;
+            else
+                return ResultEnum.DRAW;
         }
     }
 }

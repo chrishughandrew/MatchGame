@@ -3,6 +3,7 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,5 +29,54 @@ namespace MatchGameTests
             Assert.IsType<ResultEnum>(_sut.DeclareWinner());
 
         }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(24)]
+        public void DeclareWinner_ReturnsDrawWhenPlayerScoresAreEqual(int matchingScore)
+        {
+            //Arrange
+            _player1Mock.Setup(x => x.Score).Returns(matchingScore);
+            _player2Mock.Setup(x => x.Score).Returns(matchingScore);
+
+            ResultEnum expected = ResultEnum.DRAW;
+            //Act
+            ResultEnum actual = _sut.DeclareWinner();
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public void DeclareWinner_ReturnsPlayer1WhenPlayer1ScoreIsGreater()
+        {
+            //Arrange
+            _player1Mock.Setup(x => x.Score).Returns(1);
+            _player2Mock.Setup(x => x.Score).Returns(0);
+
+            ResultEnum expected = ResultEnum.PLAYER1;
+            //Act
+            ResultEnum actual = _sut.DeclareWinner();
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public void DeclareWinner_ReturnsPlayer2WhenPlayer1ScoreIsLess()
+        {
+            //Arrange
+            _player1Mock.Setup(x => x.Score).Returns(1);
+            _player2Mock.Setup(x => x.Score).Returns(23);
+
+            ResultEnum expected = ResultEnum.PLAYER2;
+            //Act
+            ResultEnum actual = _sut.DeclareWinner();
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
     }
+
 }
