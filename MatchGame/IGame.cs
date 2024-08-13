@@ -8,7 +8,7 @@ namespace MatchGame
 {
     public interface IGame
    {
-        MatchRuleEnum? MatchRule { get; }
+        MatchRuleEnum MatchRule { get; }
         ResultEnum DeclareWinner(); 
 
     }

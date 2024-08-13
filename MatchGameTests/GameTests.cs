@@ -85,19 +85,26 @@ namespace MatchGameTests
             MatchRuleEnum matchRule = MatchRuleEnum.FULL;
             //Act
             var _ = _sut.Setup(matchRule, 1);
-            MatchRuleEnum? actual = _sut.MatchRule;
+            MatchRuleEnum actual = _sut.MatchRule;
             //Assert
             Assert.Equal(matchRule, actual);
         }
 
+        [Fact]
+        public void Setup_InformsWhenFullMatchingRuleIsIncompatibleWithASinglePackDeck()
+        {
+            //Arrange
+            MatchRuleEnum matchRule = MatchRuleEnum.FULL;
+            int singlePack = 1;
+            string expected = "You can play with this setup, but nobody ever wins!";
+            
+            //Act
+            string actual= _sut.Setup(matchRule, singlePack);
 
+            //Assert
+            Assert.Equal(expected, actual);
+        }
 
-
-
-
-
-
-        //Setup_WarnsWhenFullMatchingRuleIsIncompatibleWithASingleDeck()
         //Setup_EstablishesTheCardsInTheDeck()
 
         //Play_CyclesThroughGameLogicUntilCardCountIsZero()
