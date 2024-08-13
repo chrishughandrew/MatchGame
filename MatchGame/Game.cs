@@ -35,8 +35,11 @@ namespace MatchGame
         public string Setup(MatchRuleEnum matchRule, int numOfPacks)
         {
             _matchRule = matchRule;
+            _gameDeck.BuildMultiplePacks(numOfPacks);
+            _gameDeck.Shuffle(); 
 
-            string setupInfo = matchRule == MatchRuleEnum.FULL && numOfPacks == 1
+            string setupInfo = 
+                matchRule == MatchRuleEnum.FULL && numOfPacks == 1
                 ? "You can play with this setup, but nobody ever wins!"
                 : "The game is ready to play.";
 
