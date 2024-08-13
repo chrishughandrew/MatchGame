@@ -10,9 +10,9 @@ namespace MatchGame
     {
         private List<Card> _cards;
 
-        public Deck(int numOfPacks=1)
+        public Deck()
         {
-            _cards = BuildMultiplePacks(numOfPacks);
+            _cards = BuildStandardPack();
         }
 
         public List<Card> Cards => _cards;
@@ -45,6 +45,8 @@ namespace MatchGame
             {
                 packs.AddRange(BuildStandardPack());
             }
+
+            _cards = packs;
 
             return packs;
         }

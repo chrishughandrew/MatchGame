@@ -118,7 +118,7 @@ namespace MatchGameTests
         public void Shuffle_ResultsInDifferentOrderOfCardsPropInDeck()
         {
             //Arrange
-            Deck deck = new(2);
+            Deck deck = new();
             List<Card> originalOrder = deck.Cards;
             //Act 
             deck.Shuffle();
@@ -131,8 +131,8 @@ namespace MatchGameTests
         [Fact]
         public void TakeCard_ReturnsTheTopCardFromTheDeck()
         {
-            //Arrange
-            Deck deck = new(2);
+            //Arrang
+            Deck deck = new();
             Card firstCard = deck.Cards[0];
 
             //Act
@@ -147,7 +147,7 @@ namespace MatchGameTests
         public void TakeCard_RemovesCardFromTheDeck()
         {
             //Arrange
-            Deck deck = new(2);
+            Deck deck = new();
             int originalCount = deck.Cards.Count;
             int expectedCount = originalCount - 1;
 

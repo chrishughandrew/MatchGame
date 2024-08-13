@@ -77,6 +77,13 @@ namespace MatchGameTests
             Assert.Equal(expected, actual);
 
         }
+
+        //Setup_SetsTheMatchingRuleForGamePlay()
+        //Setup_WarnsWhenFullMatchingRuleIsIncompatibleWithASingleDeck()
+        //Setup_EstablishesTheCardsInTheDeck()
+        
+        //Play_CyclesThroughGameLogicUntilCardCountIsZero()
+
     }
 
 }
