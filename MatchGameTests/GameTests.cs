@@ -78,10 +78,28 @@ namespace MatchGameTests
 
         }
 
-        //Setup_SetsTheMatchingRuleForGamePlay()
+        [Fact]
+        public void Setup_SetsTheMatchingRuleForGamePlay()
+        {
+            //Arrange
+            MatchRuleEnum matchRule = MatchRuleEnum.FULL;
+            //Act
+            var _ = _sut.Setup(matchRule, 1);
+            MatchRuleEnum? actual = _sut.MatchRule;
+            //Assert
+            Assert.Equal(matchRule, actual);
+        }
+
+
+
+
+
+
+
+
         //Setup_WarnsWhenFullMatchingRuleIsIncompatibleWithASingleDeck()
         //Setup_EstablishesTheCardsInTheDeck()
-        
+
         //Play_CyclesThroughGameLogicUntilCardCountIsZero()
 
     }

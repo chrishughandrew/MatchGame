@@ -100,6 +100,7 @@ namespace MatchGameTests
             var deckOfCards = deck.BuildMultiplePacks(methodInput);
             //Assert
             Assert.Equal(expected, deckOfCards.Count);
+            Assert.Equal(expected, deck.Cards.Count);
         }
 
         [Theory]

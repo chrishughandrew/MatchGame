@@ -11,6 +11,7 @@ namespace MatchGame
         private readonly IDeck _gameDeck;
         private readonly IPlayer _player1;
         private readonly IPlayer _player2;
+        private MatchRuleEnum? _matchRule;
 
         public Game(IDeck gameDeck, IPlayer player1, IPlayer player2)
         {
@@ -18,6 +19,8 @@ namespace MatchGame
             _player1 = player1;
             _player2 = player2;
         }
+
+        public MatchRuleEnum? MatchRule => _matchRule; 
 
         public ResultEnum DeclareWinner()
         {
@@ -27,6 +30,14 @@ namespace MatchGame
                 return ResultEnum.PLAYER2;
             else
                 return ResultEnum.DRAW;
+        }
+
+        public string Setup(MatchRuleEnum matchRule, int numOfPacks)
+        {
+            _matchRule = matchRule;
+
+
+            return String.Empty;
         }
     }
 }
