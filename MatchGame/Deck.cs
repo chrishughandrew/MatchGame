@@ -16,6 +16,7 @@ namespace MatchGame
         }
 
         public List<Card> Cards => _cards;
+        public bool HasCards => _cards.Count > 0;
 
 
         //Methods

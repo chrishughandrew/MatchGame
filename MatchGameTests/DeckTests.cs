@@ -160,5 +160,34 @@ namespace MatchGameTests
 
         }
 
+        [Fact]
+        public void HasCards_ReturnsTrueWhenCardsInDeck()
+        {
+            
+            //Arrange
+            Deck deck = new();
+
+            //Act
+            bool actual = deck.HasCards;
+
+            //Assert
+            Assert.True(actual);
+        }
+        
+        [Fact]
+        public void HasCards_ReturnsFalseWhenCardsInDeck()
+        {
+            
+            //Arrange
+            Deck deck = new();
+            deck.Cards.Clear();
+
+            //Act
+            bool actual = deck.HasCards;
+
+            //Assert
+            Assert.False(actual);
+        }
+
     }
 }

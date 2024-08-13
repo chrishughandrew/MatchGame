@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MatchGame
 {
-    internal interface IDeck
+    public interface IDeck
     {
+        bool HasCards { get; }
         List<Card> BuildStandardPack();
         List<Card> BuildMultiplePacks(int numOfPacks);
         void Shuffle();
