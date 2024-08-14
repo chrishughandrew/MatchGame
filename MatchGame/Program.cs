@@ -9,7 +9,8 @@ MatchRuleEnum chosenRule = MatchRuleEnum.SUIT;
 // Instantiate and Setup Game with given parameters
 Game game = new Game(new Deck(), new Player(), new Player());
 
-game.Setup(chosenRule, numofPacks);
+string setupStatement = game.Setup(chosenRule, numofPacks);
+Console.WriteLine(setupStatement);
 
 // Play and Delcare the winner. 
 game.Play();
