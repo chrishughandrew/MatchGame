@@ -57,7 +57,8 @@ namespace MatchGame
                 Card topPileCard = StartNewPile();
                 Console.WriteLine($"\nNEW PILE: {topPileCard}");
                 //- play through the deck until there's a match
-                //- repeat
+                PlayToPileUntilMatch(topPileCard);
+
             }
 
             //game over
@@ -85,18 +86,19 @@ namespace MatchGame
                 Card nextCard = _gameDeck.TakeCard();
                 Console.WriteLine(nextCard);
 
-
-                bool cardsMatch = true;
-                //bool cardsMatch = IsMatch(topPileCard, nextCard);
-
-                //add to pile here                
+                bool cardsMatch = IsMatch(topPileCard, nextCard);
+               
                 AddCardToPile(nextCard);
                 topPileCard = nextCard;
 
                 if (cardsMatch)
                 {
-                    //random player delcares match
-                    //add points
+                    Console.WriteLine($"There's a match!");
+                    Thread.Sleep(200);
+
+                    int playerNumber = GetPlayerNumberCallingMatch();
+                    Console.WriteLine($"Called by PLAYER {playerNumber}!");
+                    AddPointsToPlayer(playerNumber, _pile.Count);
 
                     break;
                 }
@@ -121,6 +123,26 @@ namespace MatchGame
                     throw new ArgumentOutOfRangeException();
             }
             return isMatch;
+           
+        }
+
+        private void AddPointsToPlayer(int playerNumber, int points)
+        {
+            if (playerNumber == 1)
+                _player1.AddPoints(points);
+            else if (playerNumber == 2)
+                _player2.AddPoints(points);
+            else
+                throw new ArgumentOutOfRangeException();
+            
+
+        }
+
+        private int GetPlayerNumberCallingMatch()
+        {
+            //Summary: to explain this just returns a player number. 
+            Random rnd = new(); //TODO: implement as random generator interface so implementation is mock/testable. 
+            return rnd.Next(1, 3);
         }
 
     }
