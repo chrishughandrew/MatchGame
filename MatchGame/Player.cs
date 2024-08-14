@@ -12,6 +12,9 @@ namespace MatchGame
 
         public void AddPoints(int points)
         {
+            if (points < 0) 
+                throw new ArgumentOutOfRangeException();
+
             Score += points;
         }
     }

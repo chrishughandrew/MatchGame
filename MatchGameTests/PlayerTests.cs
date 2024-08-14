@@ -24,7 +24,16 @@ namespace MatchGameTests
 
         }
 
+        [Fact]
+        public void AddPoints_ThrowsArgRangeExceptionWhenArgsAreNegative()
+        {
+            //Arrange
+            Player player = new();
+            //Act
+            //Assert
+            Assert.Throws<ArgumentOutOfRangeException>(() => player.AddPoints(-1));
 
+        }
     }
     
 }
