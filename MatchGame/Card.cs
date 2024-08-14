@@ -26,5 +26,10 @@ namespace MatchGame
             Clubs, Diamonds, Hearts, Spades
         }
 
+        public override string ToString()
+        {
+            return $"{Value.ToString()} of {Suit.ToString()}";
+        }
+
     }
 }
