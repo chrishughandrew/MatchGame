@@ -45,5 +45,19 @@ namespace MatchGame
 
             return setupInfo;
         }
+
+        public bool Play()
+        {
+            while(_gameDeck.HasCards)
+            {
+                //Add game logic here: 
+                //- create pile
+                //- play through the deck until there's a match
+                //- repeat
+            }
+
+            //game over
+            return !_gameDeck.HasCards;
+        }
     }
 }

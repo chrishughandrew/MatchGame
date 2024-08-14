@@ -118,9 +118,18 @@ namespace MatchGameTests
             //Assert
             Assert.Equal(expected, actual);
         }
-       
 
-        //Play_CyclesThroughGameLogicUntilCardCountIsZero()
+        [Fact]
+        public void Play_ReturnsFromGameLoopWhenDeckHasNoCardsRemaining()
+        {
+            //Arrange
+            _deckMock.Setup(x => x.HasCards).Returns(false);
+            //Act
+            bool gameOver = _sut.Play();
+            //Assert
+            Assert.True(gameOver);
+        }
+
 
     }
 
